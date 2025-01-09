@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CSS Position Example</title>
+        <style>
+            .container div {
+                padding: 30px;
+            }
+
+            .static {
+                position: static;
+                background-color: lightblue;
+            }
+
+            .relative {
+                position: relative;
+                left: 50px;
+                background-color: lightgreen;
+                width:100%;
+
+            }
+
+            .absolute {
+                position: absolute;
+                top: 0;
+                left: 100px;
+                background-color: lightcoral;
+            }
+            .fixed {
+                position: fixed;
+                top: 0;
+                right: 0;
+                background-color: lightskyblue;
+            }
+
+            .float-left{
+                float: left;
+                background-color: pink;
+                width: 200px;
+            }
+
+            .content {
+                overflow: hidden; /* Clearfix */
+                float:left;
+            }
+            .sidebar {
+                float: left;
+                width: 100px;
+                height: 200px;
+                background-color: lightgreen;
+            }
+
+            .main-content {
+                float: left;
+            }
+
+            .header {
+                float: left;
+                clear: left;
+            }
+
+            .container {
+                float: left;
+            }
+
+            .block {
+                display: block;
+                background-color: red;
+                padding:10px;
+            }
+
+            .inline-block {
+                display: inline-block;
+                background-color: pink;
+                padding:10px;
+                overflow: scroll;
+                width: 300px;
+                height: 20px;
+            }
+
+            .inline {
+                display: inline;
+                background-color: green;
+                padding:10px;
+                width: 300px;
+            }
+
+
+            input[type="password"] {
+                border: 2px solid red;
+            }
+
+            a:hover {
+                color: red;
+                background-color: #00ff1a;
+                padding:100px;
+            }
+
+            #check:checked {
+                border: none;
+                outline: 2px solid deeppink;
+            }
+
+            button:focus, input:focus {
+                background-color: red;;
+            }
+
+            li:nth-child(2), li:nth-child(1){
+                background-color: lightgray;
+            }
+
+            .flex {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 2px;
+            }
+
+
+            .flex > div {
+                background-color: #333333;
+                padding: 10px;
+                color: white;
+                width: 200px;
+            }
+
+            @media (max-width: 840px) {
+                .flex > div  {
+                    background-color: red;
+                    padding: 10px;
+                    color: white;
+                    width: 50px;
+                }
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+<!--        <div class="position-container" style="background-color: red">-->
+<!--            <div class="static">Static Position</div>-->
+<!--            <div class="relative">Relative Position 1</div>-->
+<!--            <div class="relative">Relative Position 2</div>-->
+<!--            <div class="absolute">Absolute Position</div>-->
+<!--            <div class="fixed">Fixed Position</div>-->
+<!--        </div>-->
+
+
+<!--    <div class="content">-->
+<!--        <div class="sidebar">Sidebar</div>-->
+<!--        <div class="container">-->
+<!--            <p class="main-content">Main Content</p>-->
+<!--            <p class="main-content">Sub Header Content</p>-->
+<!--            <p class="header"> Main Header</p>-->
+<!--            <p class="header"> Main Header</p>-->
+<!--            <p class="header"> Main Header</p>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="input">Article</label>-->
+<!--        <input id="input" type="text" value="placeholder"/>-->
+
+<!--        <label for="author">Author</label>-->
+<!--        <input id="author" type="text" value="placeholder author"/>-->
+
+<!--        <label for="password">Author</label>-->
+<!--        <input id="password" type="password" />-->
+
+
+<!--        <input id="check" type="checkbox" value="check box"/>-->
+<!--        <label for="check">Author</label>-->
+<!--        <p>The list sources:</p>-->
+<!--        <ul>-->
+<!--            <li>Wikipedia</li>-->
+<!--            <li>Google</li>-->
+<!--            <li>Library</li>-->
+<!--        </ul>-->
+<!--        <a href="https://google.com">More info</a>-->
+
+<!--        <button>Click Me</button>-->
+
+<!--    </div>-->
+    <div class="flex">
+        <div>Child</div>
+        <div>Child</div>
+        <div>Child</div>
+        <div>Child</div>
+        <div>Child</div>
+    </div>
+
+
+
+    </body>
+</html>
