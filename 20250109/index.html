@@ -1,0 +1,111 @@
+<html lang="en">
+    <head>
+        <title>Calculator</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <div class="title">
+                    <h1>My Calculator</h1>
+                </div>
+                <div class="answer" dir="rtl">
+                    <input id="answerDisplay" type="text" value="" readonly>
+                </div>
+                <div class="input-containers">
+                    <div class="row">
+                        <div class="button-container">
+                            <button>7</button>
+                        </div>
+                        <div class="button-container">
+                            <button>8</button>
+                        </div>
+                        <div class="button-container">
+                            <button>9</button>
+                        </div>
+                        <div class="button-container">
+                            <button>/</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <button>4</button>
+                        </div>
+                        <div class="button-container">
+                            <button>5</button>
+                        </div>
+                        <div class="button-container">
+                            <button>6</button>
+                        </div>
+                        <div class="button-container">
+                            <button>x</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <button>1</button>
+                        </div>
+                        <div class="button-container">
+                            <button>2</button>
+                        </div>
+                        <div class="button-container">
+                            <button>3</button>
+                        </div>
+                        <div class="button-container">
+                            <button>-</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <button>0</button>
+                        </div>
+                        <div class="button-container">
+                            <button>CL</button>
+                        </div>
+                        <div class="button-container">
+                            <button>=</button>
+                        </div>
+                        <div class="button-container">
+                            <button>+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            (function() {
+                const calculator = new Calculator();
+                const display =  document.getElementById("answerDisplay");
+                display.value = calculator.display;
+
+                const buttons = document.querySelectorAll('.button-container > button');
+                buttons.forEach((button) => {
+                    button.addEventListener('click', function(event) {
+                        const char =  event.target.innerHTML.trim();
+                        console.log(calculator);
+                        if ("1234567890".indexOf(char) >= 0) {
+                            calculator.inputNumber(char);
+                        } else {
+                            calculator.inputOp(char)
+                        }
+
+                        console.log(calculator);
+                        console.log(`Result: ${calculator.display}`)
+                        display.value = calculator.display;
+
+
+                    })
+                })
+            })()
+
+        </script>
+
+    </body>
+</html>

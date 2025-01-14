@@ -78,24 +78,47 @@
                 </div>
             </div>
         </div>
+        <script src="script.js"></script>
         <script>
+            const OPERATION = {
+                ADD: "+",
+                MINUS: "-",
+                MULTIPLY: "x",
+                EQUAL: "=",
+                CLEAR: 'CL'
+            }
+
+            const fromStringToOperation = (strValue) => {
+                const entry = Object.entries(OPERATION).find(([, value]) => strValue === value)
+                if (entry) return entry[0];
+
+                throw new Error(`Invalid value ${value}`);
+            }
+
+
+
             (function() {
+                const calculator = new Calculator();
+                const display =  document.getElementById("answerDisplay");
+                display.value = calculator.display();
+
                 const buttons = document.querySelectorAll('.button-container > button');
-                console.log(buttons);
                 buttons.forEach((button) => {
                     button.addEventListener('click', function(event) {
-                        console.log(`Button got clicked! ${event.target.innerHTML}`);
-
-                        const pressed =  event.target.innerHTML.trim();
-                        if ("1234567890".indexOf(pressed) >= 0) {
-                            document.getElementById("answerDisplay").value += pressed
+                        console.log(`before input`, calculator);
+                        const input = event.target.innerHTML.trim();
+                        if ("1234567890".includes(input)) {
+                            calculator.setNumberInput(input)
+                        } else {
+                            calculator.setOperationInput(fromStringToOperation(input))
                         }
-
-
+                        display.value = calculator.display();
+                        console.log(`after input`, calculator);
                     })
                 })
             })()
 
         </script>
+
     </body>
 </html>
