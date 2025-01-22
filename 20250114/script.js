@@ -44,16 +44,25 @@ class Calculator {
         if (operator === OPERATION.EQUAL) this.equal();
     }
 
-    add(){}
-    minus(){}
-    multiply(){}
     clear(){
         this.left = 0;
         this.right = null;
         this.operator = null;
     }
-    equal() {
 
+    add(){
+        this.left = this.left + this.right;
+        this.right = null;
     }
+
+    equal() {
+        if (this.right !== null) {
+            this.left = this.right;
+            this.right = null;
+        }
+    }
+
+    minus(){}
+    multiply(){}
 }
 

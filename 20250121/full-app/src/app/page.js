@@ -1,5 +1,5 @@
 import Dashboard from '@/components/Dashboard';
-import FetchPosts from '@/components/FetchPosts';
+import { LanguageProvider } from '@/use/LanguageContext';
 
 export default function Home() {
   const users = [
@@ -8,9 +8,10 @@ export default function Home() {
   ];
 
   return (
-    <div>
-      <Dashboard users={users} />
-      <FetchPosts></FetchPosts>
-    </div>
+    <LanguageProvider>
+      <div>
+        <Dashboard users={users} />
+      </div>
+    </LanguageProvider>
   );
 }

@@ -8,15 +8,14 @@ function ToggleVisibility({ users }) {
 
   return (
     <div>
-      <h2>What is the value of isVisibile? : {isVisible.toString()}</h2>
-
+      <h2>What is the value of isVisible? : {isVisible.toString()}</h2>
       <button onClick={() => setIsVisible(!isVisible)}>
         {isVisible ? 'Hide' : 'Show'} Unregistered Profile
       </button>
       {users.map(
         (user) =>
           (isVisible || user.isActive) && (
-            <UserProfile key={user.id} user={user} city={'Kuala'} />
+            <UserProfile key={user.id} user={user} />
           ),
       )}
     </div>
