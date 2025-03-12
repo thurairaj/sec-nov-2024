@@ -1,48 +1,54 @@
 'use client';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Link from 'next/link';
+import { getPosts } from '@/api/GetPosts';
+import Pagination from '@/components/Pagination';
 
 export default function Posts() {
+  const [current, setCurrent] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  const perPage = 10;
+
   const [posts, setPosts] = useState([]);
+  const currentPosts = posts.slice(
+    current * perPage,
+    current * perPage + perPage,
+  );
+
+  /// BASE_URL/post/123
+
+  const handlePage = (currentPage) => {
+    setCurrent(currentPage);
+  };
 
   useEffect(() => {
-    const response = axios
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .then((response) => {
-        setPosts(response.data);
-      });
+    const d = getPosts().then((response) => {
+      setPosts(response);
+      setTotal(Math.ceil(response.length / perPage));
+    });
+
+    return () => {};
   }, []);
 
   return (
-    <div>
-      {posts.map((post) => (
-        <Link key={post.id} href={`/post/${post.id}`}>
-          <div className={'container'} key={post.id}>
-            <h3>{post.title}</h3>
+    <div className={'container'}>
+      {currentPosts.map((post) => (
+        <Link
+          className={
+            'd-block text-decoration-none p-2 mb-1 border border-black'
+          }
+          key={post.id}
+          href={`/post/${post.id}`}>
+          <div key={post.id}>
+            <h3 className={''}>
+              {post.id}.{post.title}
+            </h3>
           </div>
         </Link>
       ))}
-      <style jsx>{`
-        .container {
-          border: 1px gray solid;
-          padding: 1em;
-          margin-bottom: 0.2em;
-        }
 
-        .container:hover {
-          background-color: lightgray;
-        }
-
-        .container h3 {
-          color: black;
-          text-decoration: none;
-        }
-
-        div > a {
-          text-decoration: none !important;
-        }
-      `}</style>
+      <Pagination total={total} current={current} onPageChange={handlePage} />
     </div>
   );
 }

@@ -5,6 +5,7 @@ export default function PostPage({ params }) {
     <div>
       <h1>Blog Post Id: {params.id}</h1>
       <Post postId={params.id}></Post>
+      <style jsx>{``}</style>
     </div>
   );
 }
